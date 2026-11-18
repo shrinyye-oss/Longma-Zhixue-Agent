@@ -1,0 +1,104 @@
+[
+  {
+    "path": ".gitignore",
+    "bytes": 59,
+    "sha256": "f16e1725d17e431643979700b7d6fafa5428e70faa08e54c5228f8e6bc7c6096",
+    "format": "text"
+  },
+  {
+    "path": "ARCHIVE-NOTICE.md",
+    "bytes": 243,
+    "sha256": "02870b549c4610ecf46ec90b6d8055f2a3c00568cdd492dc7599ed7bce14dee9",
+    "format": "text"
+  },
+  {
+    "path": "README-原始说明.md",
+    "bytes": 5293,
+    "sha256": "1c09dd3a1350fe140b38a3e44d6f5e3189ff7aa7ae3c9787791eb95efca9cfd3",
+    "format": "text"
+  },
+  {
+    "path": "README.md",
+    "bytes": 576,
+    "sha256": "f9a09c68259d8c450d79a66886731029468bc4eaecddfddfd41a087510863e8a",
+    "format": "text"
+  },
+  {
+    "path": "demo/龙马智学-离线可运行.html",
+    "bytes": 47652,
+    "sha256": "8638899106f3c9d634b1bac8cfedec0c6163d3d531425645b2a53286734c9448",
+    "format": "text"
+  },
+  {
+    "path": "docs/AI使用及原创性说明.md",
+    "bytes": 1722,
+    "sha256": "41f9afa2b94391b10b43a2a72714bb146b66ab238ece9bfb8de13dade9b562fb",
+    "format": "text"
+  },
+  {
+    "path": "docs/使用手册.md",
+    "bytes": 2170,
+    "sha256": "d23522458045a2b6693b8d3e0bf975ec4c7d6d26d4e18570ce2baab9a5a46aac",
+    "format": "text"
+  },
+  {
+    "path": "source/.gitignore",
+    "bytes": 37,
+    "sha256": "4b6cd0a11b6b3679bc4b9fb11099ac21642c31e9f622769cb309810baf865f70",
+    "format": "text"
+  },
+  {
+    "path": "source/agent_backend.py",
+    "bytes": 10088,
+    "sha256": "229c49af8fed8d9d18f802b452df26a39c920af52d7a84eabd91c3e417bf9cb9",
+    "format": "text"
+  },
+  {
+    "path": "source/build.py",
+    "bytes": 946,
+    "sha256": "bbf83ef77c33fadb5bf530d36d3e9ed1a30f7db524435cfff7fd31531e7213fc",
+    "format": "text"
+  },
+  {
+    "path": "source/data/knowledge.json",
+    "bytes": 13384,
+    "sha256": "6660a73a3ada71ba9e9e013f3e1790a044c257c4c01769ef38a84f88440dbdd5",
+    "format": "text"
+  },
+  {
+    "path": "source/src/app.js",
+    "bytes": 11449,
+    "sha256": "e11ed68f5b482cd1da6003efc0cbe4f514b403c722df7e2ebd849480095e002c",
+    "format": "text"
+  },
+  {
+    "path": "source/src/index.template.html",
+    "bytes": 9436,
+    "sha256": "d4c89f0fce847f9fbc5f1f9de4f10d33f83b6c3568d96ac3861506278a70b666",
+    "format": "text"
+  },
+  {
+    "path": "source/src/style.css",
+    "bytes": 13618,
+    "sha256": "06190aeb907d8fd19e40f7fd3a455c93be57b2c297b1db9c438c06031169b2a7",
+    "format": "text"
+  },
+  {
+    "path": "source/tests/test_frontend.cjs",
+    "bytes": 1905,
+    "sha256": "e33ef57839ea045b9ad2f02d5aab1f711f0b3ad7ddf3a1d36d129207757d04cf",
+    "format": "text"
+  },
+  {
+    "path": "source/tests/test_http.py",
+    "bytes": 1667,
+    "sha256": "027d8f167ceaf1c21243748e636ff3402779070c0376a7b0c0eddf23f6c1c017",
+    "format": "text"
+  },
+  {
+    "path": "source/tests/test_logic.py",
+    "bytes": 2188,
+    "sha256": "de49d4d570d499fd7d4ff46740ac0613d763452fa0bfc09e79a69bdff13aa69f",
+    "format": "text"
+  }
+]

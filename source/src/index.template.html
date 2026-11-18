@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a1725">
+  <meta name="description" content="龙马智学｜校园 Agent 复习实验室。离线知识检索、薄弱点复习与学习进度跟踪。">
+  <title>龙马智学 · Agent 复习实验室</title>
+  <style>/* INJECT_CSS */</style>
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">龍</div><div><strong>龙马智学</strong><small>AGENT LEARNING LAB</small></div></div>
+      <div class="campus">CUFE · 校园创意编程实验作品 <span class="campus-orbit">✦</span></div>
+      <div class="side-label">学习导航</div>
+      <div class="nav-stack">
+        <button class="nav active" data-tab="learn"><span class="nav-icon">◈</span> 自适应复习</button>
+        <button class="nav" data-tab="progress"><span class="nav-icon">▤</span> 学习图谱</button>
+        <button class="nav" data-tab="source"><span class="nav-icon">⌁</span> 资料与说明</button>
+      </div>
+      <div class="side-label chapter-heading">课程章节 <span id="chapter-count">0 / 10</span></div>
+      <div id="chapter-nav" class="chapter-nav"></div>
+      <div class="sidebar-bottom"><div class="network-dot"></div><span id="sidebar-mode">规则驱动离线演示</span><small>v0.1</small></div>
+    </aside>
+    <div class="shell">
+      <header class="topbar"><div class="crumb">龙马智学 <span>/</span> <b id="crumb-tab">自适应复习</b></div><div class="top-actions"><div class="status" id="app-status"><i></i> 离线规则演示</div><button class="small" id="guide-btn">使用指南 ↗</button></div></header>
+      <main class="content">
+        <section class="panel active" id="panel-learn">
+          <div class="hero"><div class="hero-overlay"><div class="eyebrow">✦ CAMPUS INTELLIGENCE · 2026</div><h1>让每一次复习，<br><em>更懂你的薄弱点。</em></h1><p>从学习目标出发，检索知识卡、匹配练习，依据答题表现调整下一步路径。</p><div class="hero-pills"><span>◈ 知识检索</span><span>◇ 自适应练习</span><span>◎ 本地进度</span></div></div><div class="hero-art" aria-hidden="true"><div class="orb-ring ring-a"></div><div class="orb-ring ring-b"></div><div class="orb-core">龍<span>AI</span></div><i class="star s1">✦</i><i class="star s2">✧</i><i class="star s3">✴</i></div></div>
+          <div class="section-title"><div><span class="section-kicker">STEP 01</span><h2>输入今天的学习目标</h2></div><span class="section-note">不需要提前组织专业术语</span></div>
+          <form class="goal-box" id="goal-form"><div class="goal-symbol">✧</div><textarea rows="2" id="goal" placeholder="例如：RAG 和微调总是弄混了，帮我练习一下。" aria-label="学习目标"></textarea><button type="submit" class="primary">制定复习路径 <span>→</span></button></form>
+          <div class="chips" id="goal-chips"><button data-goal="帮我复习 RAG 和微调的区别">RAG vs 微调</button><button data-goal="API Token 怎么计费和省成本？">Token 成本</button><button data-goal="什么才是真正的 Agent 工具调用？">Agent 工具调用</button><button data-goal="Git 版本管理有什么关键注意事项？">Git 项目管理</button></div>
+          <div class="workspace" id="workspace" hidden>
+            <div class="section-title tiny-space"><div><span class="section-kicker">STEP 02</span><h2>智能学习路径</h2></div><span class="section-note" id="route-meta"></span></div>
+            <div class="trace" id="trace"></div>
+            <div class="knowledge-grid"><article class="glass-card knowledge"><div class="card-label">🔎 知识检索结果 <span id="source-tag">演示知识卡 · 非课程正文</span></div><h3 id="knowledge-title"></h3><p id="knowledge-summary"></p><div id="knowledge-points"></div><div class="inline-source" id="knowledge-ref"></div></article><article class="glass-card learning-status"><div class="card-label">◎ 当前掌握情况</div><div class="mastery-figure" id="mastery-figure">尚未测评</div><p id="mastery-detail">完成第一道题后，系统会生成可追踪的掌握记录。</p><div class="micro-stat"><span>该章节练习次数</span><b id="topic-attempts">0</b></div><div class="micro-stat"><span>答对数量</span><b id="topic-correct">0</b></div><div class="mini-advice" id="mini-advice">先从一道基础题开始。</div></article></div>
+            <article class="quiz"><div class="quiz-head"><div><span class="section-kicker">STEP 03 · ADAPTIVE PRACTICE</span><h2>针对性练习</h2></div><span class="quiz-seq" id="quiz-seq">练习 01</span></div><div class="quiz-inner"><div class="quiz-caption" id="quiz-caption">知识点练习</div><h3 id="quiz-question"></h3><div class="answers" id="quiz-answers"></div><div class="feedback" id="quiz-feedback" hidden></div><div class="quiz-bottom"><span id="quiz-note">请选择一个答案，再查看解释</span><button id="next-btn" class="primary" type="button" disabled>下一步练习 →</button></div></div></article>
+            <div id="agent-area" class="agent-area" hidden><div><strong>连接真实模型 Agent</strong><p>模型可使用 <code>search_notes</code>、<code>get_progress</code>、<code>select_practice</code> 这些受控工具。</p></div><button id="agent-btn" class="outline">运行模型 Agent ↗</button><div id="agent-response" class="agent-response" hidden></div></div>
+          </div>
+          <div class="empty-state" id="empty-state"><div class="empty-icon">⌁</div><div><strong>复习，从一个问题开始</strong><p>填写目标后，展示完整的检索 → 诊断 → 练习闭环。</p></div></div>
+        </section>
+        <section class="panel" id="panel-progress"><div class="page-heading"><span class="section-kicker">YOUR LEARNING ATLAS</span><h1>学习图谱</h1><p>所有复习记录默认仅存放在本机浏览器中，刷新页面后仍可保留。</p></div><div class="stats"><div class="stat-box"><span>累计作答</span><b id="total-attempts">0</b><small>道练习</small></div><div class="stat-box"><span>正确率</span><b id="total-accuracy">—</b><small>全部记录</small></div><div class="stat-box"><span>已涉及知识点</span><b id="total-covered">0/10</b><small>章节</small></div></div><div class="glass-card"><div class="card-label">课程知识掌握概览 <span>基于练习记录，非正式成绩</span></div><div id="progress-bars" class="progress-bars"></div></div><div class="glass-card next-plan"><div class="card-label">下一轮建议</div><div id="next-plan"></div></div><button class="quiet-danger" id="reset-progress">清空本机学习记录</button></section>
+        <section class="panel" id="panel-source"><div class="page-heading"><span class="section-kicker">ABOUT THIS PROTOTYPE</span><h1>资料与技术说明</h1><p>把课程来源、原型能力和边界解释清楚，是这件参赛作品的一部分。</p></div><div class="source-warning"><b>关于素材来源</b><p>提供的两张学习通截图只包含章节标题和完成状态，<strong>不包含课程正文</strong>。本系统仅照录截图中的章节名称；知识卡和题目为独立编写、用于功能验证的演示内容，不能代表课程教师的原始材料或命题范围。</p></div><div class="info-columns"><div class="glass-card"><div class="card-label">离线规则演示 · 现在即可使用</div><ul><li>检索：关键词权重 + 章节标题匹配，无向量数据库</li><li>出题：来自本地结构化题库，不是实时生成</li><li>调整：根据章节错误率与未作答题目选择下一题</li><li>记录：浏览器 localStorage，本机保存</li></ul></div><div class="glass-card"><div class="card-label">真实 Agent · 可选配置</div><ul><li>本地 Python 服务端接入兼容接口的模型</li><li>支持真正的模型工具调用与多步检索</li><li>密钥保存在服务端环境变量，不进入网页源码</li><li>需模型与服务商支持工具调用，且可能产生费用</li></ul></div></div><div class="glass-card"><div class="card-label">章节范围（来自课程截图）</div><div id="source-chapters"></div></div><div class="footer-action"><button class="outline" id="export-progress">导出个人学习记录 JSON ↓</button><span>仅在你主动点击时下载</span></div></section>
+      </main>
+      <footer class="footer"><span>龙马智学 · 学生创意编程实验作品，非校方官方课程平台</span><span>本地优先 · 可解释学习路径</span></footer>
+    </div>
+  </div>
+  <dialog id="help-dialog"><h2>快速使用指南</h2><ol><li>输入复习目标或点击推荐主题。</li><li>查看检索到的演示知识卡与引用章节。</li><li>完成针对性选择题，系统自动记录结果并调整下一题。</li><li>切换到「学习图谱」查看薄弱点与复习建议。</li></ol><p>仅浏览器打开 HTML 时使用离线规则模式；如需真正的大模型工具调用，请依照 README 配置并运行 Python 服务端。</p><form method="dialog"><button class="primary">我知道了</button></form></dialog>
+  <script id="knowledge-json" type="application/json">/* INJECT_DATA */</script>
+  <script>/* INJECT_JS */</script>
+</body>
+</html>
